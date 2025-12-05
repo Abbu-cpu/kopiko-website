@@ -1,0 +1,29 @@
+
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Noto Sans,Ubuntu,Cantarell,Helvetica Neue,Arial,sans-serif;background:#0b1324;color:#e5e7eb}
+.container{max-width:1100px;margin:0 auto;padding:0 1rem}
+.section{padding:4rem 0}
+.site-header{position:sticky;top:0;border-bottom:1px solid #1f2937;backdrop-filter:blur(8px)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem}
+.brand{display:flex;align-items:center;gap:.5rem;color:inherit;text-decoration:none;font-weight:700}
+.brand-logo{width:32px;height:32px}
+.nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0}
+.actions{display:flex;align-items:center;gap:.75rem}
+.nav-toggle{display:none;background:transparent;color:inherit;border:1px solid #1f2937;border-radius:8px;padding:.25rem .5rem}
+.hero{padding:5rem 0;background:radial-gradient(1000px 300px at 20% 10%, rgba(192,22,27,.18), transparent),radial-gradient(900px 300px at 80% 20%, rgba(217,164,65,.18), transparent)}
+.hero h1{font-size:clamp(2rem,4vw,3rem);margin:0 0 .75rem}
+.lead{color:#9ca3af}
+.cta{display:flex;gap:1rem;margin-top:1.5rem}
+.btn{display:inline-block;border:1px solid #c0161b;color:#e5e7eb;background:transparent;padding:.6rem 1rem;border-radius:999px;text-decoration:none;font-weight:600}
+.btn-primary{background:#c0161b;color:#fff;border-color:#c0161b}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.card{background:#111827;border:1px solid #1f2937;border-radius:16px;padding:1.25rem;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.contact-form{display:grid;gap:.75rem}
+.contact-form input,.contact-form textarea{width:100%;padding:.6rem .75rem;border-radius:10px;border:1px solid #1f2937;background:#111827;color:#e5e7eb}
+.site-footer{border-top:1px solid #1f2937;padding:1.5rem 0}
+@media(max-width:900px){.grid-2{grid-template-columns:1fr}.cards{grid-template-columns:1fr}}
+@media(max-width:640px){.nav-toggle{display:inline-block}.nav-links{display:none;position:absolute;top:56px;right:8px;background:#111827;border:1px solid #1f2937;border-radius:12px;padding:.5rem;flex-direction:column;gap:.25rem}.nav-links.show{display:flex}}
+.theme-switch{position:relative;display:inline-block;width:42px;height:24px}
+.theme-switch input{display:none}
+.theme-switch .slider{position:absolute;cursor:pointer;background:#1f2937;border-radius:999px;inset:0}
+.theme-switch .slider::after{content:"";position:absolute;width:18px;height:18px;border-radius:999px;left:3px;top:3px;background:#c0161b;transition:transform .2s ease}
