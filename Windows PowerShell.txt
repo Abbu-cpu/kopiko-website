@@ -1,0 +1,25 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\drake>
+PS C:\Users\drake> # Create folders
+PS C:\Users\drake> $root = "kopiko-site"
+PS C:\Users\drake> New-Item -ItemType Directory -Path $root -Force | Out-Null
+PS C:\Users\drake> New-Item -ItemType Directory -Path "$root/css" -Force | Out-Null
+PS C:\Users\drake> New-Item -ItemType Directory -Path "$root/js" -Force | Out-Null
+PS C:\Users\drake> New-Item -ItemType Directory -Path "$root/assets" -Force | Out-Null
+PS C:\Users\drake>
+PS C:\Users\drake> # README.md
+PS C:\Users\drake> $readme = @"
+>> # Kopiko Site (Static)
+>>
+>> A modern, responsive redesign of Kopiko Global—featuring product families (Candy / Coffee Mix / Ready To Drink), a “Happening” hub, dark mode, and bilingual EN/BM support.
+>>
+>> ## Preview locally
+>> ```bash
+>> python3 -m http.server 8080
+>> # open http://localhost:8080
+>>
+>>

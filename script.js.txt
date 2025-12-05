@@ -1,0 +1,13 @@
+
+const $ = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+
+$('#year').textContent = new Date().getFullYear();
+
+const navToggle = $('.nav-toggle'); const navLinks = $('.nav-links');
+if (navToggle) navToggle.addEventListener('click', () => {
+  const expanded = navToggle.getAttribute('aria-expanded')==='true';
+  navToggle.setAttribute('aria-expanded', (!expanded).toString());
+  navLinks.classList.toggle('show');
+});
+$$('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('show')));

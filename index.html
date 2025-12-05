@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MKT558: GROUP PROJECT - KOPIKO</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f3eee7;
+            color: #3a2e27;
+            scroll-behavior: smooth;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* DARK MODE */
+        body.dark {
+            background: #1b1b1b;
+            color: #f5f5f5;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #6f4e37;
+            color: white;
+            padding: 15px 0;
+            z-index: 1000;
+            transition: top 0.4s;
+        }
+        nav.dark { background: #000; }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            list-style: none;
+            margin: 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* DARK MODE TOGGLE */
+        #darkToggle {
+            position: fixed;
+            right: 20px;
+            top: 15px;
+            background: #3a2e27;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 2000;
+        }
+        body.dark #darkToggle {
+            background: #f5f5f5;
+            color: #000;
+        }
+
+        header {
+            height: 70vh;
+            background: linear-gradient(to right, #6e4a33, #3a2e27);
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        section { padding: 80px 13%; }
+        h2 { color: #6e4a33; }
+        body.dark h2 { color: #d4a373; }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+        }
+        body.dark .card {
+            background: #313131;
+        }
+
+        /* CHATBOT BUTTON */
+        #chatIcon {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: #6f4e37;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 30px;
+            z-index: 1500;
+        }
+
+        /* CHAT WINDOW */
+        #chatBox {
+            position: fixed;
+            bottom: 100px;
+            right: 25px;
+            width: 320px;
+            height: 420px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            padding: 10px;
+            display: none;
+            flex-direction: column;
+        }
+        body.dark #chatBox {
+            background: #2b2b2b;
+            color: white;
+        }
+
+        #chatMessages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        #chatInput {
+            width: 94%;
+            padding: 8px;
+            border-radius: 10px;
+            border: 1px solid #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="darkToggle">☕ Dark Mode</div>
+
+<nav id="navbar">
+    <ul>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#recipe">Recipe</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#happening">Happening</a></li>
+        <li><a href="#promo">Promotion</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>MKT558: GROUP PROJECT</h1>
+    <p>KOPIKO — The Taste of Real Coffee</p>
+</header>
+
+<section id="products">
+    <h2>PRODUCTS</h2>
+    <div class="card">
+        <p>Replace with product descriptions here.</p>
+    </div>
+</section>
+
+<section id="recipe">
+    <h2>RECIPE</h2>
+    <div class="card">
+        <p>Your custom recipes using Kopiko products.</p>
+    </div>
+</section>
+
+<section id="story">
+    <h2>OUR STORY</h2>
+    <div class="card">
+        <p>Brand story goes here.</p>
+    </div>
+</section>
+
+<section id="happening">
+    <h2>HAPPENING</h2>
+    <div class="card">
+        <p>Events, campaigns, announcements.</p>
+    </div>
+</section>
+
+<section id="promo">
+    <h2>PROMOTION</h2>
+    <div class="card">
+        <p>Latest promotions here.</p>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>CONTACT US</h2>
+    <div class="card">
+        <p>Email, socials, and more.</p>
+    </div>
+</section>
+
+<!-- CHAT ICON -->
+<div id="chatIcon">💬</div>
+
+<!-- CHAT BOX -->
+<div id="chatBox">
+    <div id="chatMessages"></div>
+    <input id="chatInput" placeholder="Ask me anything..." />
+</div>
+
+<script>
+/* DARK MODE */
+document.getElementById("darkToggle").onclick = () => {
+    document.body.classList.toggle("dark");
+};
+
+/* NAVBAR SCROLL REVEAL */
+let lastScroll = 0;
+const nav = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+    let current = window.pageYOffset;
+    nav.style.top = current > lastScroll ? "-80px" : "0";
+    lastScroll = current;
+});
+
+/* SIMPLE CHATBOT */
+document.getElementById("chatIcon").onclick = () => {
+    const box = document.getElementById("chatBox");
+    box.style.display = box.style.display === "flex" ? "none" : "flex";
+};
+
+document.getElementById("chatInput").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        let msg = this.value.trim();
+        if (!msg) return;
+
+        let display = document.getElementById("chatMessages");
+        display.innerHTML += "<div><b>You:</b> " + msg + "</div>";
+
+        const reply = "Thanks for your message! This is a simple AI assistant for your presentation.";
+
+        setTimeout(() => {
+            display.innerHTML += "<div><b>KopikoBot:</b> " + reply + "</div>";
+            display.scrollTop = display.scrollHeight;
+        }, 500);
+
+        this.value = "";
+    }
+});
+</script>
+
+</body>
+</html>
